@@ -12,6 +12,7 @@ from platformdirs import user_config_dir, user_downloads_dir
 
 from torrra.core.constants import (
     DEFAULT_CACHE_TTL,
+    DEFAULT_LISTEN_INTERFACES,
     DEFAULT_MAX_RATIO,
     DEFAULT_MAX_RETRIES,
     DEFAULT_MAX_SEED_TIME,
@@ -76,6 +77,9 @@ def get_default_config() -> dict[str, Any]:
             "upload_limit": DEFAULT_SPEED_LIMIT_UPLOAD,
             "download_limit": DEFAULT_SPEED_LIMIT_DOWNLOAD,
             "enabled": False,
+        },
+        "network": {
+            "listen_interfaces": DEFAULT_LISTEN_INTERFACES,
         },
         "seeding": {
             "default_max_ratio": DEFAULT_MAX_RATIO,

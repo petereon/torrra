@@ -20,6 +20,7 @@ from torrra._types import (
 )
 from torrra.core.config import get_config
 from torrra.core.constants import (
+    DEFAULT_LISTEN_INTERFACES,
     DEFAULT_SPEED_LIMIT_DOWNLOAD,
     DEFAULT_SPEED_LIMIT_UPLOAD,
 )
@@ -50,8 +51,11 @@ class DownloadManager:
     }
 
     def __init__(self) -> None:
+        listen_interfaces = get_config().get(
+            "network.listen_interfaces", DEFAULT_LISTEN_INTERFACES
+        )
         settings: lt.settings_pack = {
-            "listen_interfaces": "0.0.0.0:6881,[::]:6881,0.0.0.0:0,[::]:0",
+            "listen_interfaces": listen_interfaces,
             "enable_dht": True,
             "dht_bootstrap_nodes": (
                 "dht.libtorrent.org:25401,"
